@@ -1,0 +1,9 @@
+.projects-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .projects-list__fallback {
+    color: white;
+    text-align: center;
+  }
