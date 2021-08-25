@@ -1,10 +1,8 @@
 import { useState } from "react";
 import "./ProjectForm.css";
 import languageSelection from "../../components-text/NewProject/ProjectForm";
-// import DatePicker from "react-datepicker";
-// import { registerLocale } from "react-datepicker";
-// import es from "date-fns/locale/es";
-// registerLocale('es', es)
+import DateTab from './DateTab';
+import "react-datepicker/dist/react-datepicker.css";
 
 const ProjectForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -36,7 +34,15 @@ const ProjectForm = (props) => {
   };
 
   const dateChangeHandler = (e) => {
-    setEnteredDate(e.target.value);
+    // .toLocaleString('en-US', { month: "long" })
+    // console.log(e)
+    // console.log(new Date())
+    
+    // While using DatePicker
+    setEnteredDate(e)
+
+    // While using input date default
+    //setEnteredDate(e.target.value);
   };
 
   const versionChangeHandler = (e) => {
@@ -48,9 +54,11 @@ const ProjectForm = (props) => {
 
     const projectData = {
       title: enteredTitle,
-      date: new Date(enteredDate),
+      date: enteredDate,
       version: enteredVersion,
     };
+
+    console.log(projectData)
 
     setEnteredTitle("");
     setEnteredVersion("");
@@ -103,13 +111,14 @@ const ProjectForm = (props) => {
                   minDate="2000-01-01"
                   maxDate="2022-12-31"
                 /> */}
-                <input
+                <DateTab language={props.language} onDateChange={dateChangeHandler}/>
+                {/* <input
                   type="date"
                   min="2000-01-01"
                   max="2022-12-31"
                   value={enteredDate}
                   onChange={dateChangeHandler}
-                />
+                /> */}
               </div>
               <div className="new-project__control">
                 <label>{languageSelector.version}</label>

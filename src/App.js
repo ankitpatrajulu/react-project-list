@@ -4,6 +4,7 @@ import ProjectItemList from "./components/Projects/ProjectItemList";
 import NewProject from "./components/NewProject/NewProject";
 import ProfileSection from './components/Projects/ProfileSection'
 
+
 const INITIAL_DATA = [
   {
     id: "p1",
@@ -13,7 +14,7 @@ const INITIAL_DATA = [
   },
   {
     id: "p2",
-    date: new Date(2021, 7, 23),
+    date: new Date(2019, 7, 23),
     title: "Project 2",
     version: "1.4",
   },
@@ -25,7 +26,7 @@ const INITIAL_DATA = [
   },
   {
     id: "p4",
-    date: new Date(2021, 7, 23),
+    date: new Date(2022, 7, 23),
     title: "Project 4",
     version: "1.6",
   },
@@ -46,6 +47,10 @@ const App = () => {
     setLanguage(changeLanguage)
     //console.log(changeLanguage)
   }
+
+  // const dateChangeHandler = (e) => {
+  //   console.log('Called ' + e)
+  // }
 
   return (
     <div>

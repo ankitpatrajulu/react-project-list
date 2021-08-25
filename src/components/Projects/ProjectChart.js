@@ -1,59 +1,66 @@
 import Chart from "../Chart/Chart";
+import languageSelection from "../../components-text/Projects/ProjectChart";
 
 const ProjectChart = (props) => {
+  const languageSelector =
+    props.language === "en" ? languageSelection.EN : languageSelection.ES;
   const chartDataPoints = [
     {
-      label: "Jan",
+      label: languageSelector[0],
       value: 0,
     },
     {
-      label: "Feb",
+      label: languageSelector[1],
       value: 0,
     },
     {
-      label: "Mar",
+      label: languageSelector[2],
       value: 0,
     },
     {
-      label: "Apr",
+      label: languageSelector[3],
       value: 0,
     },
     {
-      label: "Jun",
+      label: languageSelector[4],
       value: 0,
     },
     {
-      label: "Jul",
+      label: languageSelector[5],
       value: 0,
     },
     {
-      label: "Aug",
+      label: languageSelector[6],
       value: 0,
     },
     {
-      label: "Sep",
+      label: languageSelector[7],
       value: 0,
     },
     {
-      label: "Oct",
+      label: languageSelector[8],
       value: 0,
     },
     {
-      label: "Nov",
+      label: languageSelector[9],
       value: 0,
     },
     {
-      label: "Dec",
+      label: languageSelector[10],
       value: 0,
-    }
+    },
+    {
+      label: languageSelector[11],
+      value: 0,
+    },
   ];
 
-  for(const project of props.projects){
-      const projMonth = project.date.getMonth()-1
-      chartDataPoints[projMonth].value += parseInt(project.version)
+  for (const project of props.projects) {
+    const projMonth = project.date.getMonth() - 1;
+    chartDataPoints[projMonth].value += parseInt(project.version);
   }
 
-  return <Chart dataPoints={chartDataPoints}/>;
+  return <Chart dataPoints={chartDataPoints} />;
 };
 
 export default ProjectChart;

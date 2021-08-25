@@ -26,7 +26,7 @@ const ProjectItemList = (props) => {
             selectedYear={selectedYear}
             language={props.language}
           />
-          <ProjectChart projects={projects}/>
+          <ProjectChart projects={projects} language={props.language}/>
           <ProjectList projects={projects} language={props.language} />
         </Card>
       </li>
