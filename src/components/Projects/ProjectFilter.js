@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ProjectFilter.css";
+import styles from "./ProjectFilter.module.css";
 import languageSelection from "../../components-text/Projects/ProjectFilter";
 
 const ProjectFilter = (props) => {
@@ -13,8 +13,8 @@ const ProjectFilter = (props) => {
     props.onFilterChange(e.target.value);
   };
   return (
-    <div className="projects-filter">
-      <div className="projects-filter__control">
+    <div className={styles['projects-filter']}>
+      <div className={styles['projects-filter__control']}>
         <label>{languageSelector.label}</label>
         <select onChange={filterChangeHandler} value={filterData}>
           {languageSelector.options.map((option, index) => (

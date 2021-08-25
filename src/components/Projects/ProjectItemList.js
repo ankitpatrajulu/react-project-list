@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "../UI/Card";
 import ProjectFilter from "./ProjectFilter";
-import "./ProjectItemList.css";
+import styles from "./ProjectItemList.module.css";
 import ProjectList from "./ProjectList";
 import ProjectChart from "./ProjectChart";
 
@@ -20,7 +20,7 @@ const ProjectItemList = (props) => {
   return (
     <div>
       <li>
-        <Card className="projects">
+        <Card className={styles.projects}>
           <ProjectFilter
             onFilterChange={filterConfigureHandler}
             selectedYear={selectedYear}

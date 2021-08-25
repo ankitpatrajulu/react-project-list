@@ -1,5 +1,5 @@
 import ProjectItem from "./ProjectItem";
-import "./ProjectList.css";
+import styles from "./ProjectList.module.css";
 import languageSelection from "../../components-text/Projects/ProjectList";
 
 const ProjectList = (props) => {
@@ -7,7 +7,7 @@ const ProjectList = (props) => {
     props.language === "en" ? languageSelection.EN : languageSelection.ES;
   if (props.projects.length === 0) {
     return (
-      <p className="projects-list__fallback">
+      <p className={styles['projects-list__fallback']}>
         {languageSelector.no_projects_found}
       </p>
     );
@@ -22,7 +22,7 @@ const ProjectList = (props) => {
         language={props.language}
       />
     ));
-    return <ul className="projects-list">{projectContent}</ul>;
+    return <ul className={styles['projects-list']}>{projectContent}</ul>;
   }
 };
 

@@ -1,4 +1,4 @@
-import "./NewProject.css";
+import styles from "./NewProject.module.css";
 import ProjectForm from "./ProjectForm";
 
 const NewProject = (props) => {
@@ -11,7 +11,7 @@ const NewProject = (props) => {
     props.onAddProjectData(projectData);
   };
   return (
-    <div className="new-project">
+    <div className={styles['new-project']}>
       <ProjectForm onSaveProjectData={saveProjectDataHandler} language={props.language}/>
     </div>
   );

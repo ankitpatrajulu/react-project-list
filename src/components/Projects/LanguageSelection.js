@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./LanguageSelection.css";
+import styles from "./LanguageSelection.module.css";
 import Card from '../UI/Card'
 import languageSelection from "../../components-text/Projects/LanguageSelection";
 
@@ -17,8 +17,8 @@ const LanguageSelection = (props) => {
   };
 
   return (
-    <Card className="language-selection">
-      <div className="language-selection__control">
+    <Card className={styles['language-selection']}>
+      <div className={styles['language-selection__control']}>
         <label>{languageSelector.label}</label>
         <select onChange={languageChangeHandler} value={language}>
           <option value={languageSelector.options[0].languageCode}>

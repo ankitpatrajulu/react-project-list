@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LanguageSelection from "./LanguageSelection";
+import styles from './ProfileSection.module.css'
 
 const ProfileSection = (props) => {
   const [language, setLanguage] = useState(props.language);
@@ -12,7 +13,7 @@ const ProfileSection = (props) => {
   };
 
   return (
-    <div className="profile-section">
+    <div className={styles['profile-section']}>
       <LanguageSelection
         onLanguageChange={languageModifyHandler}
         language={language}

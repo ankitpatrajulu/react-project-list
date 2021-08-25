@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ProjectForm.css";
+import styles from "./ProjectForm.module.css";
 import languageSelection from "../../components-text/NewProject/ProjectForm";
 import DateTab from './DateTab';
 import "react-datepicker/dist/react-datepicker.css";
@@ -89,11 +89,11 @@ const ProjectForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-project__controls">
+      <div className={styles['new-project__controls']}>
         {(!show && formContent) ||
           (show && (
             <div>
-              <div className="new-project__control">
+              <div className={styles['new-project__control']}>
                 <label>{languageSelector.title}</label>
                 <input
                   type="text"
@@ -102,7 +102,7 @@ const ProjectForm = (props) => {
                   onChange={titleChangeHandler}
                 />
               </div>
-              <div className="new-project__control">
+              <div className={styles['new-project__control']}>
                 <label>{languageSelector.date}</label>
                 {/* <DatePicker
                   selected={enteredDate}
@@ -120,7 +120,7 @@ const ProjectForm = (props) => {
                   onChange={dateChangeHandler}
                 /> */}
               </div>
-              <div className="new-project__control">
+              <div className={styles['new-project__control']}>
                 <label>{languageSelector.version}</label>
                 <input
                   type="number"
@@ -130,7 +130,7 @@ const ProjectForm = (props) => {
                   onChange={versionChangeHandler}
                 />
               </div>
-              <div className="new-project__actions">
+              <div className={styles['new-project__actions']}>
                 <button type="button" onClick={cancelClickHandler}>
                   {languageSelector.cancel}
                 </button>
