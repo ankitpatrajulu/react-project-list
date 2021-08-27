@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 import ProjectItemList from "./components/Projects/ProjectItemList";
 import NewProject from "./components/NewProject/NewProject";
-import ProfileSection from './components/Projects/ProfileSection'
-
+import ProfileSection from "./components/Projects/ProfileSection";
+import LanguageContext from "./store/language-context";
 
 const INITIAL_DATA = [
   {
@@ -30,34 +30,49 @@ const INITIAL_DATA = [
     title: "Project 4",
     version: "1.6",
   },
-]
+];
 
 const App = () => {
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState("en");
   const [projects, setProjects] = useState(INITIAL_DATA);
 
+  useEffect(() => {
+    const isUserLanguageSelected = localStorage.getItem("IS_LANGUAGE_SELECTED");
+    if (isUserLanguageSelected === "en" || isUserLanguageSelected === "es") {
+      //console.log(isUserLanguageSelected)
+      setLanguage(isUserLanguageSelected);
+    }
+  }, []);
+
   const addProjectDataHandler = (enteredProjectData) => {
-    console.log(enteredProjectData)
+    //console.log(enteredProjectData)
     setProjects((prevProjects) => {
-      return [enteredProjectData, ...prevProjects]
-    })
+      return [enteredProjectData, ...prevProjects];
+    });
   };
 
   const languageHandler = (changeLanguage) => {
-    setLanguage(changeLanguage)
+    localStorage.setItem("IS_LANGUAGE_SELECTED", changeLanguage);
+    setLanguage(changeLanguage);
     //console.log(changeLanguage)
-  }
+  };
 
   // const dateChangeHandler = (e) => {
   //   console.log('Called ' + e)
   // }
 
   return (
-    <div>
-      <ProfileSection language={language} onLanguageChange={languageHandler}/>
-      <NewProject language={language} onAddProjectData={addProjectDataHandler} />
-      <ProjectItemList language={language} projects={projects} />
-    </div>
+    <LanguageContext.Provider
+      value={{
+        language: language,
+        languageHandler: languageHandler,
+        addProjectDataHandler: addProjectDataHandler,
+      }}
+    >
+      <ProfileSection />
+      <NewProject />
+      <ProjectItemList projects={projects} />
+    </LanguageContext.Provider>
   );
 };
 

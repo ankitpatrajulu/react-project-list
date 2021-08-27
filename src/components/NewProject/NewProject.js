@@ -2,17 +2,17 @@ import styles from "./NewProject.module.css";
 import ProjectForm from "./ProjectForm";
 
 const NewProject = (props) => {
-  const saveProjectDataHandler = (enteredProjectData) => {
-    const projectData = {
-      ...enteredProjectData,
-      id: Math.random().toString(),
-    };
+  // const saveProjectDataHandler = (enteredProjectData) => {
+  //   const projectData = {
+  //     ...enteredProjectData,
+  //     id: Math.random().toString(),
+  //   };
 
-    props.onAddProjectData(projectData);
-  };
+  //   props.onAddProjectData(projectData);
+  // };
   return (
     <div className={styles['new-project']}>
-      <ProjectForm onSaveProjectData={saveProjectDataHandler} language={props.language}/>
+      <ProjectForm/>
     </div>
   );
 };

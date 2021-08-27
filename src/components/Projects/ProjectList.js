@@ -1,10 +1,13 @@
+import { useContext } from 'react';
+import LanguageContext from '../../store/language-context';
 import ProjectItem from "./ProjectItem";
 import styles from "./ProjectList.module.css";
 import languageSelection from "../../components-text/Projects/ProjectList";
 
 const ProjectList = (props) => {
+  const languageContext = useContext(LanguageContext)
   const languageSelector =
-    props.language === "en" ? languageSelection.EN : languageSelection.ES;
+  languageContext.language === "en" ? languageSelection.EN : languageSelection.ES;
   if (props.projects.length === 0) {
     return (
       <p className={styles['projects-list__fallback']}>

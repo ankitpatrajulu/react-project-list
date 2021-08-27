@@ -1,9 +1,12 @@
+import { useContext } from 'react';
+import LanguageContext from '../../store/language-context';
 import Chart from "../Chart/Chart";
 import languageSelection from "../../components-text/Projects/ProjectChart";
 
 const ProjectChart = (props) => {
+  const languageContext = useContext(LanguageContext)
   const languageSelector =
-    props.language === "en" ? languageSelection.EN : languageSelection.ES;
+  languageContext.language === "en" ? languageSelection.EN : languageSelection.ES;
   const chartDataPoints = [
     {
       label: languageSelector[0],

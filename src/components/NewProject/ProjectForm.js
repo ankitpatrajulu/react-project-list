@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./ProjectForm.module.css";
 import languageSelection from "../../components-text/NewProject/ProjectForm";
 import DateTab from './DateTab';
-import "react-datepicker/dist/react-datepicker.css";
+import LanguageContext from "../../store/language-context";
 
-const ProjectForm = (props) => {
+
+const ProjectForm = () => {
+  const languageContext = useContext(LanguageContext)
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredVersion, setEnteredVersion] = useState("");
@@ -12,7 +14,7 @@ const ProjectForm = (props) => {
   //const locale = props.language === "en" ? 'en-GB' : es;
 
   const languageSelector =
-    props.language === "es" ? languageSelection.ES : languageSelection.EN;
+    languageContext.language === "es" ? languageSelection.ES : languageSelection.EN;
 
   // Using one useState
   // const [userInput, setUserInput] = useState({
@@ -56,6 +58,7 @@ const ProjectForm = (props) => {
       title: enteredTitle,
       date: enteredDate,
       version: enteredVersion,
+      id: Math.random().toString(),
     };
 
     console.log(projectData)
@@ -64,7 +67,7 @@ const ProjectForm = (props) => {
     setEnteredVersion("");
     setEnteredDate("");
 
-    props.onSaveProjectData(projectData);
+    languageContext.onProjectDataHandler(projectData);
     setShow(false);
   };
 
@@ -111,7 +114,7 @@ const ProjectForm = (props) => {
                   minDate="2000-01-01"
                   maxDate="2022-12-31"
                 /> */}
-                <DateTab language={props.language} onDateChange={dateChangeHandler}/>
+                <DateTab language={languageContext.language} onDateChange={dateChangeHandler}/>
                 {/* <input
                   type="date"
                   min="2000-01-01"
